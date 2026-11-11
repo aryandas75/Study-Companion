@@ -16,11 +16,12 @@ import pomodoroRoutes from "./routes/pomodoro.routes.js";
 import analyticsRoutes from "./routes/analytics.routes.js";
 import studyGoalRoutes from "./routes/studyGoal.routes.js";
 import flashcardRoutes from "./routes/flashcard.routes.js";
+
 const app = express();
 
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin: process.env.CLIENT_URL || "http://localhost:5173",
     credentials: true,
   })
 );
@@ -41,8 +42,9 @@ app.use("/api/pomodoro", pomodoroRoutes);
 app.use("/api/analytics", analyticsRoutes);
 app.use("/api/study-goals", studyGoalRoutes);
 app.use("/api/flashcards", flashcardRoutes);
+
 // Error handler
-app.use((err, req, res, next) => { 
+app.use((err, req, res, next) => {
   if (err instanceof multer.MulterError) {
     return res.status(400).json({
       success: false,
