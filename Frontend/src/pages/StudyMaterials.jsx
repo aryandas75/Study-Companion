@@ -5,7 +5,8 @@ import remarkGfm from "remark-gfm";
 import html2pdf from "html2pdf.js";
 import api from "../services/api";
 
-const API_BASE = "http://localhost:3000";
+const API_URL =
+  import.meta.env.VITE_API_URL || "http://localhost:3000/api";
 
 const inputClass =
   "w-full rounded-xl border border-white/10 bg-[#0b1020] px-4 py-3 text-sm text-white outline-none transition placeholder:text-slate-500 focus:border-cyan-400 focus:ring-2 focus:ring-cyan-400/10";
