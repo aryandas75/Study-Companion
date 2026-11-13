@@ -21,15 +21,14 @@ const app = express();
 
 const allowedOrigins = [
   "http://localhost:5173",
+  "https://localhost",
   process.env.CLIENT_URL,
 ].filter(Boolean);
 
-app.use(
-  cors({
-    origin: allowedOrigins,
-    credentials: true,
-  })
-);
+app.use(cors({
+  origin: allowedOrigins,
+  credentials: true
+}));
 
 app.use(express.json());
 app.use(cookieParser());
